@@ -1,0 +1,153 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Raise Issue</a>
+      </li>
+      <li class="breadcrumb-item active">My Issues</li>
+    </ol>
+    <!-- Trigger the modal with a button -->
+    <div class="panel panel-default modal-dialog-form-position">
+      <div class="panel-body" >
+        <i class="fa fa-plus-square" data-toggle="modal"
+           data-target="#raiseModal" aria-hidden="true" (click)="openNewIssueForm();"><span style="font-size:20px;color:green">Raise Issue</span></i>
+        <div class="row ">
+          <div class="bgColor">
+            <table class="table table-bordered ">
+              <thead>
+              <tr>
+                <th>Issue Id</th>
+                <th>Issue Type</th>
+                <th>Block</th>
+                <th>Building No</th>
+                <th>Customer Name</th>
+                <th>Mobile No</th>
+                <th>Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let issue of issues; let i = index">
+                <td>{{issue.issueId}}</td>
+                <td>{{issue.issueType}}</td>
+                <td>{{issue.block}}</td>
+                <td>{{issue.buildingNumber}}</td>
+                <td>{{issue.customerName}}</td>
+                <td>{{issue.mobileNumber}}</td>
+                <td>
+                  <select class="form-control" placeholder="Account Type" name="issueStatus"
+                          id='issueStatus'  >
+                    <option label="IssueStatus"  selected="selected" value=""></option>
+                    <option   *ngFor="let issueStatus of issueStatus" [selected]="issueStatus.status==selectedStatus" value="{{issueStatus.status}}"> {{issueStatus.status}}</option>
+                  </select>
+
+                </td>
+
+                <td><i   class="fa fa-pencil" aria-hidden="true" data-toggle="modal"
+                         data-target="#raiseModal" (click)="updateIsuue(issue,i)"></i> </td>
+                <td>
+                  <p class="fa fa-trash-o" aria-hidden="true" (click)="deleteCustomer(i)" ></p>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="raiseModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Raise Issue</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          </div><br>
+
+
+
+          <form  role="form" [formGroup]="issueForm" (ngSubmit)="saveIssue(issueForm.value)" class="modal-dialog-form-position">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div id="page-wrapper">
+                  <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="email">Issue Type:</label>
+                        <input type="text" class="form-control" id="issueType" placeholder="Enter IssueType"
+                               formControlName="issueType"  name="issueType">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="email">Block:</label>
+                        <input type="text" class="form-control" id="block" formControlName="block" placeholder="Enter block"  name="block">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="email">Building No:</label>
+                        <input type="text" class="form-control" id="email" placeholder="Enter Building No"
+                               formControlName="buildingNumber"  name="buildingNumber">
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="email">Customer Name:</label>
+                        <input type="text" class="form-control" id="ownerName"
+                               formControlName="customerName"       placeholder="Enter Customer Name" name="customerName">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="email">Owner Email:</label>
+                        <input type="email" class="form-control" id="ownerEmail"
+                               formControlName="customerEmail"        placeholder="Enter Customer Email" name="customerEmail">
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="email">Mobile No:</label>
+                        <input type="text" class="form-control" id="mobileNumber"
+                               formControlName="mobileNumber"   placeholder="Enter Mobile No" name="mobileNumber">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                      <input type="submit" class="btn btn-default" value="Submit" >
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+
+
+
+</div>
+</div>
