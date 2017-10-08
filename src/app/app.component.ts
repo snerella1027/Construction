@@ -33,4 +33,8 @@ export class AppComponent {
     this.router.navigate(['./raiseIssues']);
   }
 
+  goToMeterialDashBoard=function () {
+    this.isLogin=true;
+    this.router.navigate(['./meterialDashBoard']);
+  }
 }

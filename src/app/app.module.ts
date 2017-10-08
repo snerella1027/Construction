@@ -7,12 +7,14 @@ import {routing} from "./app.routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './login/login.component';
 import { IssuesComponent } from './issues/issues.component';
+import { MeterialdashboardComponent } from './meterialdashboard/meterialdashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
     CustomerComponent,
     LoginComponent,
-    IssuesComponent
+    IssuesComponent,
+    MeterialdashboardComponent
   ],
   imports: [
     routing,
